@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'myapp',
     'weather',
     'home',
+    'polls',
     
     # Django Default Apps
     'django.contrib.admin',

@@ -22,4 +22,5 @@ urlpatterns = [
     path("app/", include("myapp.urls")),
     path("weather/", include("weather.urls")),
     path("", include("home.urls")),
+    path("polls/", include("polls.urls")),
 ]
