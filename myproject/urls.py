@@ -23,4 +23,5 @@ urlpatterns = [
     path("weather/", include("weather.urls")),
     path("", include("home.urls")),
     path("polls/", include("polls.urls")),
+    path("rel/", include("relations.urls")),
 ]
