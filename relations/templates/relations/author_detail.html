@@ -1,0 +1,18 @@
+{% extends "relations/base.html" %}
+
+{% block title %}{{block.super}} | {{ autor.name }}{% endblock title %}
+
+{% block content %}
+    <h1>Bücher von {{ autor.name }}</h1>
+    <ul class="book-list">
+        {% for buch in buecher %}
+        <li class="book-card">
+            <span>{{ buch.title }}</span>
+        </li>
+        {% empty %}
+        <p class="no-books">Keine Bücher veröffentlicht</p>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'author_list' %}" class="back-link">← Zurück zur Übersicht</a>
+{% endblock content %}

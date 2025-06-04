@@ -1,0 +1,18 @@
+{% extends "relations/base.html" %}
+
+{% block title %}{{block.super}} | Autoren Übersicht{% endblock title %}
+
+{% block content %}
+    <h1>Unsere Autoren</h1>
+    <ul class="list">
+        {% for a in authors %}
+        <li class="card">
+            <a href="{% url "author_detail" a.id %}">{{ a.name }}</a>
+        </li>
+        {% empty %}
+        <p class="no-data">Keine Autoren vorhanden.</p>
+        {% endfor %}
+    </ul>
+{% endblock content %}
+
+{% block footer %}Autoren | {{ block.super }}{% endblock footer %}

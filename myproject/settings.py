@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'home',
     'polls',
     'relations',
+    'newyear',
+    'wednesday',
     
     # Django Default Apps
     'django.contrib.admin',

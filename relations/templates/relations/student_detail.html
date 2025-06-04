@@ -1,0 +1,21 @@
+{% extends "relations/base.html" %}
+
+{% block title %}{{block.super}} | {{ student.name }}{% endblock title %}
+
+{% block content %}
+    <h1>Kurse von {{ student.name }}</h1>
+
+    {% if courses %}
+      <ul class="list">
+        {% for course in courses %}
+          <li class="card">
+            <span>{{ course.title }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="no-courses">Keine Kurse belegt.</p>
+    {% endif %}
+
+    <a href="{% url 'student_list' %}" class="back-link">← Zurück zur Übersicht</a>
+{% endblock content %}

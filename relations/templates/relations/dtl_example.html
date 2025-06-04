@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Stuff</title>
+</head>
+<body style="padding: 2rem 0; margin: 0 auto; max-width: 800px">
+    <h1>Django Template Language Examples</h1>
+    <hr>
+    <section>
+        <h2>Variablen in Templates:</h2>
+        <h3>Hallo {{ name }} </h3>
+        <p>Du bist ja schon {{ alter }} Jahre alt</p>
+        <p>Und Deine Hobbies sind: {{ hobbys }}</p>
+        <p>Du wohnst in {{ address.plz }} {{ address.city }}</p>
+        <p>Deine Lieblingsfrucht ist: {{ fruit.3 }}</p>
+
+    </section>
+    <hr>
+    <section>
+        <h2>Conditionals</h2>
+
+        {% if alter >= 18 %}
+            <p><strong>ERWACHSEN</strong></p>
+        {% elif alter >= 13 %}
+            <p><strong>TEENAGER</strong></p>
+        {% else %}
+            <p><strong>KIND</strong></p>
+        {% endif %}
+
+        <p>bla bla bla</p>
+    </section>
+    <hr>
+    <section>
+        <h2>For Loop</h2>
+        <h3>Standard For-Schleife</h3>
+        <!-- Old School 
+            {% if hobbys %}
+            <ul>
+                {% for elem in hobbys %}
+                <li>{{ elem }}</li>
+                {% endfor %}
+            <ul>
+            {% else %}
+                <p>Keine Hobbies vorhanden</p>
+            {% endif %}
+        -->
+        <!-- Besser -->
+        <ul>
+            {% for elem in hobbys %}
+            <li>{{ elem }}</li>
+            {% empty %}
+            <li>Keine Hobbies</li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <h2>For Schleifen Variablen</h2>
+        <h3>forloop.counter</h3>
+        <ul>
+            {% for elem in hobbys %}
+            <li>{{ forloop.counter }} {{ elem }}</li>
+            {% empty %}
+            <li>Keine Hobbies</li>
+            {% endfor %}
+        </ul>
+
+        <h3>forloop.counter0</h3>
+        <ul>
+            {% for elem in hobbys %}
+            <li>[{{ forloop.counter0 }}] {{ elem }}</li>
+            {% empty %}
+            <li>Keine Hobbies</li>
+            {% endfor %}
+        </ul>
+
+        <h3>forloop.first und forloop.last</h3>
+        <ul>
+            {% for elem in hobbys %}
+                {% if forloop.first %}
+                    <li>Das erste Hobby: {{ elem }}</li>
+                {% elif forloop.last %}
+                    <li>Das letzte Hobby: {{ elem }}</li>
+                {% else %}
+                    <li>{{ elem }}</li>
+                {% endif %}
+            {% empty %}
+            <li>Keine Hobbies</li>
+            {% endfor %}
+        </ul>
+    </section>
+    <hr>
+    <section>
+        <h2>URL Links</h2>
+        <a href="{% url "student_list" %}">Studenten Liste</a>
+    </section>
+    
+</body>
+</html>
