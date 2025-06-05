@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import SpaceAcademyForm
+from .models import AcademyApplication
 
 # Create your views here.
 def academy_application(request):
@@ -13,6 +14,7 @@ def academy_application(request):
         
         # 2. Validierung der Daten und auslesen
         if form_filled.is_valid():
+            
             name = form_filled.cleaned_data['full_name']
             email = form_filled.cleaned_data['email']
             species = form_filled.cleaned_data['species']
@@ -44,13 +46,15 @@ def academy_application(request):
         # 4. Antwort zurück an den Client (Beispiel)
         #return HttpResponse(content)
         
-        # 5. Bessere Methode
+        # 5 Die aller aller Beste Methode - Daten in DB speichern
+        AcademyApplication.objects.create(**form_filled.cleaned_data)
         
-        # Formular-Daten in Session speichern
+        # 6. Showcase - Daten in Session-ID-Cookie speichern
         form_filled.cleaned_data['date_of_birth'] = form_filled.cleaned_data['date_of_birth'].strftime("%d.%m.%Y")
         request.session["form-data"] = form_filled.cleaned_data
-        return redirect('forms:success')
     
+        # 7 Bestätigungsseite aufrufen
+        return redirect('forms:success')
         
     # Get Request Code
     form = SpaceAcademyForm()
