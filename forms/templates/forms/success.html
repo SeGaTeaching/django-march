@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Erfolgreich Bewerbt</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #f9f5d7, #fff8dc);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      padding: 2rem;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #3e3e3e;
+    }
+
+    .summary {
+      border-top: 1px solid #ccc;
+      padding-top: 1rem;
+    }
+
+    .summary dt {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .summary dd {
+      margin-left: 0;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Vielen Dank für Ihre Bewerbung!</h1>
+    <p>Hier sind die eingereichten Daten:</p>
+
+    <dl class="summary">
+      <dt>Vollständiger Name:</dt>
+      <dd>{{ data.full_name }}</dd>
+
+      <dt>E-Mail-Adresse:</dt>
+      <dd>{{ data.email }}</dd>
+
+      <dt>Spezies:</dt>
+      <dd>{{ data.species }}</dd>
+
+      <dt>Online-Profil:</dt>
+      <dd>{{ data.online_profile }}</dd>
+
+      <dt>Fähigkeiten:</dt>
+      <dd>
+        {% for skill in data.skills %}
+          • {{ skill }}<br>
+        {% endfor %}
+      </dd>
+
+      <dt>Motivation:</dt>
+      <dd>{{ data.motivation }}</dd>
+
+      <dt>Geburtsdatum:</dt>
+      <dd>{{ data.date_of_birth|default:"Not born yet" }}</dd>
+
+      <dt>Zustimmung:</dt>
+      <dd>{% if data.agree_to_terms %}Ja{% else %}Nein{% endif %}</dd>
+    </dl>
+
+    <a href="{% url "forms:academy_contact" %}">← Zurück zum Formular</a>
+  </main>
+</body>
+</html>

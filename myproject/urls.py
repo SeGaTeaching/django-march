@@ -27,4 +27,5 @@ urlpatterns = [
     path("rel/", include("relations.urls")),
     path("newyear/", include("newyear.urls")),
     path("isitwednesday/", wednesday.views.is_wednesday, name="is_wednesday"),
+    path('academy/', include('forms.urls')),
 ]

@@ -51,6 +51,8 @@ def index(request):
         summary_lines.append("  Kein Benutzer angemeldet oder 'request.user' nicht verfügbar.")
 
     summary_lines.append("\n--- Ende der Übersicht ---")
+    
+    summary_lines.append(f"Session {request.session.items()}")
 
     
     
