@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Magische Lizenz beantragen</title>
+  <link rel="stylesheet" href="{% static 'nerd_forms/magic.css' %}">
+</head>
+<body>
+  <main>
+    <h2>Lizenzantrag für Magier:innen</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Lizenz beantragen</button>
+    </form>
+  </main>
+</body>
+</html>

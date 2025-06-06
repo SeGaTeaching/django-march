@@ -1,0 +1,129 @@
+/* Mystischer Hogwarts-Stil */
+body {
+  background: url('https://images.unsplash.com/photo-1615550241132-f0ae2ae30fcf') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Garamond', 'Georgia', serif;
+  color: #3b2f2f;
+  padding: 3rem;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgba(250, 245, 230, 0.95); /* Pergament-Ton */
+  padding: 2.5rem 3rem;
+  border: 2px solid #5c4436;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(60, 45, 20, 0.5);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  color: #402e2a;
+  text-transform: uppercase;
+  border-bottom: 2px solid #5c4436;
+  padding-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+form p {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #2e1f1b;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="file"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #fdf6e3;
+  border: 1px solid #d2b48c;
+  color: #2d1f14;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #7f5b3f;
+  box-shadow: 0 0 10px rgba(160, 130, 90, 0.6);
+  outline: none;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  accent-color: #5c4436;
+}
+
+input[type="checkbox"] + label {
+  display: inline;
+}
+
+.checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+button[type="submit"] {
+  width: 100%;
+  background-color: #5c4436;
+  color: #f9f5e9;
+  border: none;
+  padding: 0.85rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(60, 45, 20, 0.4);
+  transition: all 0.3s ease;
+  font-family: 'Garamond', serif;
+}
+
+button[type="submit"]:hover {
+  background-color: #7b5a4b;
+  box-shadow: 0 0 18px rgba(90, 70, 50, 0.6);
+}
+
+::placeholder {
+  color: #a89b90;
+  font-style: italic;
+}
+
+/* Puls-Animation für Eingabefelder */
+@keyframes magicalPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(124, 95, 70, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(124, 95, 70, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(124, 95, 70, 0.5);
+  }
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  animation: magicalPulse 1.4s infinite;
+}

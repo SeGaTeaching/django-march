@@ -28,4 +28,5 @@ urlpatterns = [
     path("newyear/", include("newyear.urls")),
     path("isitwednesday/", wednesday.views.is_wednesday, name="is_wednesday"),
     path('academy/', include('forms.urls')),
+    path('nerd/', include('nerd_forms.urls')), # Beispiele für Model Form
 ]

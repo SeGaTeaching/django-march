@@ -26,36 +26,36 @@ def academy_application(request):
             cv = form_filled.cleaned_data['upload_cv']
             terms = form_filled.cleaned_data['agree_to_terms']
             
-        # 3 Daten verarbeiten (DB Speichern)
-        content = f"""
-        <p>Vielen Dank für Deine Daten</p>
-        <ul>
-        <li>Name: {name}</li>
-        <li>E-Mail: {email}</li>
-        <li>Spezie: {species}</li>
-        <li>Bereich: {branch}</li>
-        <li>Profil: {profile}</li>
-        <li>Fähigkeiten: {skills}</li>
-        <li>Motiv: {motiv}</li>
-        <li>Geburtstag: {birthdate}</li>
-        <li>Lebenslauf: {cv}</li>
-        <li>Bedingungen: {terms}</li>
-        </ul>
-        """
+            # 3 Daten verarbeiten (DB Speichern)
+            content = f"""
+            <p>Vielen Dank für Deine Daten</p>
+            <ul>
+            <li>Name: {name}</li>
+            <li>E-Mail: {email}</li>
+            <li>Spezie: {species}</li>
+            <li>Bereich: {branch}</li>
+            <li>Profil: {profile}</li>
+            <li>Fähigkeiten: {skills}</li>
+            <li>Motiv: {motiv}</li>
+            <li>Geburtstag: {birthdate}</li>
+            <li>Lebenslauf: {cv}</li>
+            <li>Bedingungen: {terms}</li>
+            </ul>
+            """
+            
+            # 4. Antwort zurück an den Client (Beispiel)
+            #return HttpResponse(content)
+            
+            # 5 Die aller aller Beste Methode - Daten in DB speichern
+            AcademyApplication.objects.create(**form_filled.cleaned_data)
+            
+            # 6. Showcase - Daten in Session-ID-Cookie speichern
+            form_filled.cleaned_data['date_of_birth'] = form_filled.cleaned_data['date_of_birth'].strftime("%d.%m.%Y")
+            request.session["form-data"] = form_filled.cleaned_data
         
-        # 4. Antwort zurück an den Client (Beispiel)
-        #return HttpResponse(content)
-        
-        # 5 Die aller aller Beste Methode - Daten in DB speichern
-        AcademyApplication.objects.create(**form_filled.cleaned_data)
-        
-        # 6. Showcase - Daten in Session-ID-Cookie speichern
-        form_filled.cleaned_data['date_of_birth'] = form_filled.cleaned_data['date_of_birth'].strftime("%d.%m.%Y")
-        request.session["form-data"] = form_filled.cleaned_data
-    
-        # 7 Bestätigungsseite aufrufen
-        return redirect('forms:success')
-        
+            # 7 Bestätigungsseite aufrufen
+            return redirect('forms:success')
+            
     # Get Request Code
     form = SpaceAcademyForm()
     return render(request, 'forms/application.html', {'form': form})

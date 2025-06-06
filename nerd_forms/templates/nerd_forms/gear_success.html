@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Registrierung erfolgreich</title>
+  <link rel="stylesheet" href="{% static 'nerd_forms/villain.css' %}">
+</head>
+<body>
+  <main>
+    <h2>Eintrag abgeschlossen</h2>
+    <p>Die folgende Ausrüstung wurde erfolgreich registriert:</p>
+
+    <dl>
+      <dt>Alias des Besitzers:</dt>
+      <dd>{{ gear.owner_alias }}</dd>
+
+      <dt>Name der Ausrüstung:</dt>
+      <dd>{{ gear.gear_name }}</dd>
+
+      <dt>Typ:</dt>
+      <dd>{{ gear.get_gear_type_display }}</dd>
+
+      <dt>Ursprungsjahr:</dt>
+      <dd>{{ gear.origin_year }}</dd>
+
+      <dt>Explosiv:</dt>
+      <dd>{% if gear.explosive %}Ja{% else %}Nein{% endif %}</dd>
+
+      <dt>Leistungswert:</dt>
+      <dd>{{ gear.power_rating }}</dd>
+    </dl>
+  </main>
+</body>
+</html>
