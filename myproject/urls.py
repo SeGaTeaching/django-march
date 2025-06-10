@@ -20,6 +20,7 @@ import wednesday.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include("accounts.urls")),
     path("app/", include("myapp.urls")),
     path("weather/", include("weather.urls")),
     path("", include("home.urls")),
@@ -29,4 +30,5 @@ urlpatterns = [
     path("isitwednesday/", wednesday.views.is_wednesday, name="is_wednesday"),
     path('academy/', include('forms.urls')),
     path('nerd/', include('nerd_forms.urls')), # Beispiele für Model Form
+    path('exo/', include("exo_planet.urls")),
 ]

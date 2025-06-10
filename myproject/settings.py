@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # My Custom Apps
+    'accounts',
     'myapp',
     'weather',
     'home',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'wednesday',
     'forms',
     'nerd_forms',
+    'exo_planet',
     
     # Django Default Apps
     'django.contrib.admin',

@@ -1,0 +1,9 @@
+{% extends "exo_planet/base.html" %}
+{% block content %}
+  <h2>Registrierung</h2> {# oder Login / Neuer Planet #}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add User</button>
+  </form>
+{% endblock %}
