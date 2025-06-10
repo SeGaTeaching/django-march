@@ -1,0 +1,183 @@
+/* static/style.css */
+
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;700&display=swap');
+
+/* --- CSS Variablen für einfaches Anpassen --- */
+:root {
+    --primary-font: 'Roboto', sans-serif;
+    --heading-font: 'Orbitron', sans-serif;
+    --dark-space-bg: #1a1a2e; /* Dunkelblau als Hintergrund */
+    --card-bg: #16213e;      /* Etwas helleres Blau für Karten/Formulare */
+    --accent-color: #0f3460;   /* Akzentfarbe für Ränder */
+    --highlight-color: #e94560;  /* Auffällige Farbe für Buttons & Highlights */
+    --text-color: #e0e0e0;      /* Helle Textfarbe für Lesbarkeit */
+    --text-color-darker: #a0a0a0; /* Dunklere Textfarbe für Hinweise */
+}
+
+/* --- Allgemeine Body-Styles --- */
+body {
+    margin: 0;
+    font-family: var(--primary-font);
+    background-color: var(--dark-space-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Navigationsleiste --- */
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--card-bg);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--highlight-color);
+    color: #fff;
+}
+
+nav span {
+    font-weight: bold;
+    margin-right: auto; /* Schiebt die Links nach rechts */
+    padding-left: 1rem;
+}
+
+/* --- Hauptinhaltsbereich --- */
+main {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 2rem auto; /* Zentriert den Inhalt mit etwas Abstand */
+}
+
+/* --- Überschriften --- */
+h2 {
+    font-family: var(--heading-font);
+    color: var(--highlight-color);
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* --- Formular-Styling (Login, Registrierung, Planeten-Formular) --- */
+form {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Django's form.as_p rendert <p>-Tags, die wir hier nutzen */
+form p {
+    margin-bottom: 1.5rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color-darker);
+    font-weight: bold;
+}
+
+/* Styling für alle Arten von Eingabefeldern */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--dark-space-bg);
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    font-size: 1rem;
+    box-sizing: border-box; /* Verhindert, dass Padding die Breite beeinflusst */
+}
+
+input[type="checkbox"] {
+    /* Checkboxen sind schwerer zu stylen, hier ein einfacher Ansatz */
+    width: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
+/* --- Button-Styling --- */
+button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--highlight-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-family: var(--heading-font);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #c43a52; /* Etwas dunklere Hover-Farbe */
+}
+
+/* --- Planeten-Liste --- */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border-left: 5px solid var(--highlight-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+}
+
+ul li:hover {
+    transform: translateY(-3px);
+}
+
+ul li strong {
+    font-family: var(--heading-font);
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+/* --- Nachrichten-Framework --- */
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.messages li {
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+}
+
+.messages li.success {
+    background-color: #28a745;
+}
+
+.messages li.error {
+    background-color: #dc3545;
+}

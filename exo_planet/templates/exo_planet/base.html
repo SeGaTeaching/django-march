@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exoplanet DB</title>
+  <link rel="stylesheet" href="{% static 'exo_planet/style.css' %}">
+</head>
+<body>
+  <nav>
+    
+      <span>🧑 Hallo {% if user.is_authenticated %}
+        <a href="{% url 'accounts:user_profile' %}">{{ user.username }}</a>
+        {% else %}
+        Gast
+        {% endif %}!
+      </span>
+      <a href="{% url 'exo_planet:planet_list' %}">🌍 Meine Planeten</a>
+      <a href="{% url 'exo_planet:add_planet' %}">➕ Neuer Planet</a>
+    {% if user.is_authenticated %}
+      <a href="{% url 'accounts:logout' %}">🚪 Logout</a>
+      {% if user.is_staff %}
+      <a href="/admin/">Admin-Area</a>
+      {% endif %}
+    {% else %}
+      <a href="{% url 'accounts:login' %}">Anmelden</a>
+      <a href="{% url 'accounts:register' %}">Registrieren</a>
+    {% endif %}
+  </nav>
+  <main>
+    {% if messages %}
+      <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

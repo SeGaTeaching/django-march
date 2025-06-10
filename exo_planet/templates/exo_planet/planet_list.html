@@ -1,0 +1,12 @@
+{% extends "exo_planet/base.html" %}
+
+{% block content %}
+  <h2>Your Exoplanets</h2>
+  <ul>
+    {% for planet in planets %}
+      <li><strong>{{ planet.name }}</strong> ({{ planet.orbit_type }}) – Radius: {{ planet.radius_km }} km – Habitabel: {{ planet.habitable|yesno:"Bewohnbar,Unbewohnbar" }}</li>
+    {% empty %}
+      <li>Du hast noch keine Planeten entdeckt.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

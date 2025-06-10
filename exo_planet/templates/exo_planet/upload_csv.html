@@ -1,0 +1,16 @@
+{% extends "exo_planet/base.html" %}
+
+{% block content %}
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<form method="post" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Upload File">
+</form>
+{% endblock content %}

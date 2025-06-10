@@ -1,0 +1,11 @@
+{% extends "exo_planet/base.html" %}
+
+{% block content %}
+  <h2>Add Planet</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Planet</button>
+  </form>
+  <p><a href="{% url "exo_planet:planet_list" %}">Go to Planet List</a> | <a href="{% url "exo_planet:upload_csv" %}">Upload a CSV File</a></p>
+{% endblock %}
