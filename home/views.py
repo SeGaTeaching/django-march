@@ -55,5 +55,5 @@ def index(request):
     summary_lines.append(f"Session {request.session.items()}")
 
     
-    
-    return HttpResponse("\n".join(summary_lines), content_type='text/plain')
+    return render(request, 'home/index.html', {'lines': summary_lines})
+    #return HttpResponse("\n".join(summary_lines), content_type='text/plain')

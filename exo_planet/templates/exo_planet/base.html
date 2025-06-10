@@ -15,6 +15,7 @@
         Gast
         {% endif %}!
       </span>
+      <a href="{% url "home:index" %}">Home</a>
       <a href="{% url 'exo_planet:planet_list' %}">🌍 Meine Planeten</a>
       <a href="{% url 'exo_planet:add_planet' %}">➕ Neuer Planet</a>
     {% if user.is_authenticated %}

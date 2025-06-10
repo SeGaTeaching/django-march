@@ -1,0 +1,16 @@
+{% extends "exo_planet/base.html" %}
+
+{% block content %}
+
+<h1>Das Request Objekt</h1>
+<ul>
+    {% for line in lines %}
+    <li>{{ line }}</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}
+
+
+
