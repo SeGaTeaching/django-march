@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 import wednesday.views
 
 urlpatterns = [
@@ -31,4 +33,8 @@ urlpatterns = [
     path('academy/', include('forms.urls')),
     path('nerd/', include('nerd_forms.urls')), # Beispiele für Model Form
     path('exo/', include("exo_planet.urls")),
+    path('retro/', include("retro_games.urls")),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

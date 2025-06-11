@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Retro-Spiele</title>
+    <link rel="stylesheet" href="{% static 'retrogames/css/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>🕹️ RetroGameDex</h1>
+    <div class="game-grid">
+        {% for game in games %}
+        <div class="game-card">
+            {% if game.game_cover %}
+                <img src="{{ game.game_cover.url }}" alt="{{ game.title }}" onclick="openModal('{{ game.game_cover.url }}')">
+            {% endif %}
+            <h2>{{ game.title }}</h2>
+            <p><strong>Konsole:</strong> {{ game.get_console_display }}</p>
+            <p><strong>Jahr:</strong> {{ game.year }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <p style="text-align: center; margin-top: 40px;">
+        <a href="{% url 'retro_games:upload_game' %}">➕ Neues Spiel hinzufügen</a>
+    </p>
+</div>
+
+<!-- Modal -->
+<div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+
+<script>
+function openModal(url) {
+    document.getElementById("modalImage").src = url;
+    document.getElementById("imageModal").style.display = "block";
+}
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+</script>
+</body>
+</html>
