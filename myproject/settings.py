@@ -162,9 +162,27 @@ pymysql.install_as_MySQLdb()
 
 # Variante 2 sogar noch besser 
 # Die Datenbank-URL wird automatisch in die korrekte Dictionary-Struktur geparst
+# DATABASES = {
+#     'default': env.db(),
+# }
+
+#-------------------------------
+# POSTGRESQL EXAMPLE
+#-------------------------------
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'june_postgres_db',
+#         'USER': 'june_postgres_user',
+#         'PASSWORD': 'user_password_sehr_sicher',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5433',
+#     }
+# }
 DATABASES = {
     'default': env.db(),
 }
+
 
 
 # Password validation
