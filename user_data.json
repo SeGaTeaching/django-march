@@ -1,0 +1,74 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$xy55cfX9FSvOavfBtgEi3V$zWQY83rNSJWeQ74WNt4FZff8C1w01ghyakI/+Zd8UO0=",
+    "last_login": "2025-06-10T12:03:45.305Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-06-02T08:17:32.357Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$GvGKRgXlUGHFTasvvUn55t$m8wb70380WT2nK3q+geddzWe1MH0DIVC4alvLZwTxhY=",
+    "last_login": "2025-06-10T12:09:43.029Z",
+    "is_superuser": false,
+    "username": "Batman",
+    "first_name": "Bruce",
+    "last_name": "Wayne",
+    "email": "bat@cave.net",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-06-10T09:25:11.344Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$yZKCtvqclxFDINQ4y8ohbf$CCIWUz7CkwI9yobsBAd0StbpclKYzoskCBszOwZU+HI=",
+    "last_login": "2025-06-10T12:20:17.797Z",
+    "is_superuser": false,
+    "username": "Wonder-Woman",
+    "first_name": "Diana",
+    "last_name": "Prince",
+    "email": "ww@amazon-island.az",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-06-10T11:56:28.654Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$Gk1hFqASvrKR4XrbqsuJvq$O2vT8+Sl3iqm+KCOUsaBxAgD+YvCJUpqeGz3wU7d3mA=",
+    "last_login": "2025-06-10T12:26:51.702Z",
+    "is_superuser": false,
+    "username": "Doctor-Strange",
+    "first_name": "Stephen",
+    "last_name": "Strange",
+    "email": "magic@magic.ny",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-06-10T12:00:54.799Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

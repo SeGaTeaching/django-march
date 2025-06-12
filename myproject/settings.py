@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
+import pymysql
+from dotenv import load_dotenv # (Variante 1 - Umgebungsvariablen)
+import environ # (Variante 2 - Umgebungsvariablen)
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -19,11 +22,31 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
+# Lädt die Variablen aus der .env-Datei in die Umgebung (Variante 1 - Umgebungsvariablen)
+load_dotenv()
+
+# Initialisiere environ (Variante 2 - Umgebungsvariablen)
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
+# Lese die .env-Datei (BASE_DIR muss korrekt definiert sein)
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y#o1=z2twoba4ivvg@*e+ad+mt*_p=*y1sqvd+$b1rl+l3^6j_'
+# (Variante 1 - Umgebungsvariablen)
+#SECRET_KEY = os.environ.get('SECRET_KEY') 
+
+# (Variante 2 - Umgebungsvariablen)
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# (Variante 1 - Umgebungsvariablen)
+#DEBUG = os.environ.get('DEBUG') == 'True'
+
+# (Variante 2 - Umgebungsvariablen)
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -83,15 +106,64 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
-
+#-----------------------
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+#-----------------------
 
+# Default SQLite3 Database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# MySQL Database Settings
+pymysql.install_as_MySQLdb()
+
+# Unsicher Variante, da Daten sichtbar im Code stehen
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'django_june_25_db',
+#         'USER': 'django_june_25_user',
+#         'PASSWORD': 'user_password_sehr_sicher',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3307',
+#     }
+# }
+
+# Bessere Variante mit Umgebungsvariablen
+#------------------------------------------
+# Variante 1 (allgemein für Python)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get('DB_NAME'),
+#         'USER': os.environ.get('DB_USER'),
+#         'PASSWORD': os.environ.get('DB_PASSWORD'),
+#         'HOST': os.environ.get('DB_HOST'),
+#         'PORT': os.environ.get('DB_PORT'),
+#     }
+# }
+
+# Variante 2 (speziell für Django)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': env('DB_NAME'),
+#         'USER': env('DB_USER'),
+#         'PASSWORD': env('DB_PASSWORD'),
+#         'HOST': env('DB_HOST'),
+#         'PORT': env('DB_PORT'),
+#     }
+# }
+
+# Variante 2 sogar noch besser 
+# Die Datenbank-URL wird automatisch in die korrekte Dictionary-Struktur geparst
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.db(),
 }
 
 

@@ -7,7 +7,7 @@ class Example(models.Model):
     date = models.DateField(auto_now=True)
     views_count = models.IntegerField(default=10)
     is_published = models.BooleanField(default=False)
-    gender = models.CharField(choices=[
+    gender = models.CharField(max_length=100, choices=[
         ("F", "Weiblich"),
         ("M", "Männlich"),
         ("D", "Divers")

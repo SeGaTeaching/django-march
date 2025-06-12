@@ -12,9 +12,9 @@ build/
 *.egg
 
 # OS Files
-.DS_Store # macOS
-.env # Environment variables
-.env.* # Generic environment variable files
+.DS_Store
+.env
+.env.* 
 .env/
 
 # Editors
@@ -27,7 +27,7 @@ build/
 /media/
 /static_collected/
 *.log
-local_settings.py # For sensitive local settings (e.g., database credentials)
+local_settings.py
 
 # Virtual environment
 .dj_env/
@@ -46,3 +46,4 @@ env/
 # Be cautious with sensitive files. It's better to use environment variables.
 # myproject/settings/local.py
 # myproject/settings/production.py
+.env

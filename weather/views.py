@@ -1,11 +1,12 @@
 import requests
+import os
 import json
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 def weather_view(request):
-    API_KEY = "e840120397fd69790c9ff22e5f354b0f"
+    API_KEY = os.environ.get('API_KEY')
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=' + API_KEY
     
     if request.method == 'POST':

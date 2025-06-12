@@ -11,7 +11,7 @@ class RetroGame(models.Model):
     ]
 
     title = models.CharField(max_length=100)
-    console = models.CharField(max_length=10, choices=CONSOLES)
+    console = models.CharField(max_length=100, choices=CONSOLES)
     year = models.PositiveIntegerField()
     game_cover = models.ImageField(upload_to='retrogames/covers/')
 
