@@ -1,0 +1,11 @@
+{% extends "exo_planet/base.html" %}
+
+{% block content %}
+  <h2>Planet bearbeiten:</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-icon">💾 Speichern</button>
+    <a href="{% url 'exo_planet:planet_list' %}" class="btn-icon">Zurück</a>
+  </form>
+{% endblock %}

@@ -3,10 +3,24 @@
 {% block content %}
   <h2>Your Exoplanets</h2>
   <ul>
-    {% for planet in planets %}
-      <li><strong>{{ planet.name }}</strong> ({{ planet.orbit_type }}) – Radius: {{ planet.radius_km }} km – Habitabel: {{ planet.habitable|yesno:"Bewohnbar,Unbewohnbar" }}</li>
-    {% empty %}
-      <li>Du hast noch keine Planeten entdeckt.</li>
-    {% endfor %}
+  {% for planet in planets %}
+    <li class="planet-item">
+      <div class="planet-info">
+        <strong>{{ planet.name }}</strong> ({{ planet.orbit_type }}) –
+        Radius: {{ planet.radius_km }} km –
+        Habitabel: {{ planet.habitable|yesno:"Bewohnbar,Unbewohnbar" }}
+      </div>
+      <div class="action-buttons">
+        <a href="{% url "exo_planet:edit_planet" planet.id %}" class="btn-icon" title="Bearbeiten">
+          <i class="fas fa-pen"></i>
+        </a>
+        <a href="{% url "exo_planet:delete_planet" planet.id %}" class="btn-icon delete" title="Löschen">
+          <i class="fas fa-trash"></i>
+        </a>
+      </div>
+    </li>
+  {% empty %}
+    <li>Du hast noch keine Planeten entdeckt.</li>
+  {% endfor %}
   </ul>
 {% endblock %}

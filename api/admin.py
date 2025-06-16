@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import RetroGame
+from .models import Note
 
 # Register your models here.
-admin.site.register(RetroGame)
+admin.site.register(Note)

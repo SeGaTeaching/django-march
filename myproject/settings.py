@@ -55,6 +55,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # My Custom Apps
+    'rest_framework',
+    'api',
+    'corsheaders',
     'accounts',
     'myapp',
     'weather',
@@ -80,11 +83,19 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# Für Tests / Entwicklung (nicht für Produktion offen lassen!)
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5500",
 ]
 
 ROOT_URLCONF = 'myproject.urls'
@@ -112,12 +123,12 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 #-----------------------
 
 # Default SQLite3 Database
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # MySQL Database Settings
 pymysql.install_as_MySQLdb()
@@ -179,9 +190,9 @@ pymysql.install_as_MySQLdb()
 #         'PORT': '5433',
 #     }
 # }
-DATABASES = {
-    'default': env.db(),
-}
+# DATABASES = {
+#     'default': env.db(),
+# }
 
 
 

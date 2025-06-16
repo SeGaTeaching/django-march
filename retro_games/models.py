@@ -3,11 +3,12 @@ from django.db import models
 # Create your models here.
 class RetroGame(models.Model):
     CONSOLES = [
+        ('gameboy', 'Gameboy'),
         ('nes', 'NES'),
         ('snes', 'SNES'),
         ('n64', 'Nintendo 64'),
         ('ps1', 'PlayStation 1'),
-        ('nds', 'Nintendo 3DS'),
+        ('pc', 'Windows PC'),
     ]
 
     title = models.CharField(max_length=100)

@@ -1,5 +1,5 @@
 import csv
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import ExoplanetForm, CSVUploadForm
@@ -57,3 +57,26 @@ def upload_csv(request):
     else:
         form = CSVUploadForm()
     return render(request, 'exo_planet/upload_csv.html', {'form': form})
+
+
+def edit_planet(request, planet_id):
+    planet = get_object_or_404(Exoplanet, id=planet_id)
+    if request.method == 'POST':
+        form = ExoplanetForm(request.POST, instance=planet)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Planet erfolgreich aktualisiert")
+            return redirect('exo_planet:planet_list')
+    else:
+        form = ExoplanetForm(instance=planet)
+    return render(request, 'exo_planet/edit_planet.html', {'form': form})
+
+
+def delete_planet(request, planet_id):
+    planet = get_object_or_404(Exoplanet, id=planet_id)
+    if request.method == 'POST':
+        planet.delete()
+        messages.success(request, f"{planet.name} wurde gelöscht")
+        return redirect('exo_planet:planet_list')
+    return render(request, 'exo_planet/delete_planet.html', {'planet': planet})
+    
